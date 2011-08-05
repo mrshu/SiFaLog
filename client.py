@@ -10,34 +10,6 @@ import time
 s = socket.socket()
 s.connect(('127.0.0.1', 1212))
 
-def get_img(socket, img):
-    s.send("a\r\n")
-
-    l = s.recv(8)
-
-    #print l
-    l = int(l)
-    img = s.recv(l)
-
-
-    ll = len(img)
-
-    while ll != l:
-        tmp = s.recv(128)
-        if not tmp: break
-        ll += len(tmp)
-        img += tmp
-
-    img = StringIO.StringIO(img)
-    try:
-        i = wx.ImageFromStream(img)
-        return wx.BitmapFromImage(i)
-    except:
-        return
-
-
-
-
 class Panel1(wx.Panel):
     """ class Panel1 creates a panel with an image on it, inherits wx.Panel """
     def __init__(self, parent, id):

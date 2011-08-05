@@ -19,6 +19,8 @@ int main(void)
                                 continue;
                         
                         log.img(img);
+                } else if (strcmp(out.c_str(), "q") == 0) {
+                        log.restart();
                 }
 
         }
